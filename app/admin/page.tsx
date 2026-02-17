@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Download, FileSpreadsheet, Lock, Users, FileText, ChevronLeft, ChevronRight, X, Filter, RotateCw } from "lucide-react";
+import { Search, Download, FileSpreadsheet, Lock, Users, FileText, ChevronLeft, ChevronRight, X, Filter, RotateCw, Phone, MapPin } from "lucide-react";
 
 type Registration = {
     id: string;
@@ -154,23 +154,23 @@ export default function AdminDashboard() {
                     initial={{ opacity: 0, scale: 0.9, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="relative bg-white rounded-3xl p-12 w-full max-w-md shadow-2xl"
+                    className="relative bg-white rounded-3xl p-8 sm:p-12 w-full max-w-md shadow-2xl"
                 >
-                    <div className="absolute -top-16 left-1/2 -translate-x-1/2">
+                    <div className="absolute -top-12 sm:-top-16 left-1/2 -translate-x-1/2">
                         <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                            className="bg-gradient-to-br from-red-600 to-red-700 p-6 rounded-2xl shadow-2xl"
+                            className="bg-gradient-to-br from-red-600 to-red-700 p-5 sm:p-6 rounded-2xl shadow-2xl"
                         >
-                            <Lock className="w-10 h-10 text-yellow-400" strokeWidth={2.5} />
+                            <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-yellow-400" strokeWidth={2.5} />
                         </motion.div>
                     </div>
 
-                    <div className="text-center mt-8 mb-8">
-                        <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Access</h1>
-                        <p className="text-gray-600">Sanskar Group of Institution</p>
-                        <p className="text-sm text-gray-500 mt-1">Danta, Sikar, Rajasthan</p>
+                    <div className="text-center mt-6 sm:mt-8 mb-6 sm:mb-8">
+                        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Admin Access</h1>
+                        <p className="text-sm sm:text-base text-gray-600">Sanskar Group of Institution</p>
+                        <p className="text-xs sm:text-sm text-gray-500 mt-1">Danta, Sikar, Rajasthan</p>
                     </div>
 
                     <div className="space-y-4">
@@ -220,32 +220,32 @@ export default function AdminDashboard() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-yellow-50/30 font-[Poppins]">
             <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-red-950 to-slate-900 border-b border-red-900/20 shadow-xl backdrop-blur-sm">
-                <div className="max-w-7xl mx-auto px-6 py-4">
-                    <div className="flex items-center justify-between">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="flex items-center gap-3"
+                            className="flex items-center gap-2 sm:gap-3"
                         >
                             <div className="relative">
-                                <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse" />
-                                <div className="absolute inset-0 w-3 h-3 bg-red-600 rounded-full animate-ping opacity-75" />
+                                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-600 rounded-full animate-pulse" />
+                                <div className="absolute inset-0 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-red-600 rounded-full animate-ping opacity-75" />
                             </div>
                             <div>
-                                <h1 className="text-xl font-bold text-white">Sanskar Admin Panel</h1>
-                                <p className="text-xs text-gray-400">Danta, Sikar, Rajasthan</p>
+                                <h1 className="text-base sm:text-xl font-bold text-white">Sanskar Admin Panel</h1>
+                                <p className="text-[10px] sm:text-xs text-gray-400">Danta, Sikar, Rajasthan</p>
                             </div>
                         </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="flex items-center gap-3"
+                            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto"
                         >
-                            <div className="bg-red-950/50 border border-red-800/30 rounded-full px-4 py-2 flex items-center gap-2">
-                                <Users className="w-4 h-4 text-yellow-400" />
-                                <span className="text-sm font-bold text-white">{total}</span>
-                                <span className="text-xs text-gray-400">Registrations</span>
+                            <div className="bg-red-950/50 border border-red-800/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 justify-center">
+                                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-400 flex-shrink-0" />
+                                <span className="text-xs sm:text-sm font-bold text-white">{total}</span>
+                                <span className="text-[10px] sm:text-xs text-gray-400 whitespace-nowrap">Registrations</span>
                             </div>
 
                             <motion.button
@@ -253,7 +253,7 @@ export default function AdminDashboard() {
                                 disabled={exporting}
                                 whileHover={{ scale: exporting ? 1 : 1.05 }}
                                 whileTap={{ scale: exporting ? 1 : 0.95 }}
-                                className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-bold px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                                className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-bold px-4 sm:px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-h-[44px]"
                             >
                                 {exporting ? (
                                     <>
@@ -263,12 +263,12 @@ export default function AdminDashboard() {
                                         >
                                             <RotateCw className="w-4 h-4" />
                                         </motion.div>
-                                        <span className="text-sm">Exporting...</span>
+                                        <span className="text-xs sm:text-sm">Exporting...</span>
                                     </>
                                 ) : (
                                     <>
                                         <FileSpreadsheet className="w-4 h-4" />
-                                        <span className="text-sm">Export Excel</span>
+                                        <span className="text-xs sm:text-sm">Export Excel</span>
                                     </>
                                 )}
                             </motion.button>
@@ -277,12 +277,12 @@ export default function AdminDashboard() {
                 </div>
             </header>
 
-            <main className="max-w-7xl mx-auto px-6 py-8">
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
                 <motion.div
                     initial="hidden"
                     animate="visible"
                     variants={staggerContainer}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-4 sm:mb-8"
                 >
                     {[
                         { label: "Total Registrations", value: total, icon: Users, color: "from-red-500 to-red-600" },
@@ -293,16 +293,16 @@ export default function AdminDashboard() {
                             key={i}
                             variants={fadeIn}
                             whileHover={{ y: -4 }}
-                            className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 relative overflow-hidden"
+                            className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 relative overflow-hidden"
                         >
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-600/5 to-yellow-400/5 rounded-full blur-2xl" />
+                            <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-red-600/5 to-yellow-400/5 rounded-full blur-2xl" />
                             <div className="relative flex items-center justify-between">
                                 <div>
-                                    <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                                    <div className="text-sm text-gray-500 font-medium">{stat.label}</div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
+                                    <div className="text-xs sm:text-sm text-gray-500 font-medium">{stat.label}</div>
                                 </div>
-                                <div className={`bg-gradient-to-br ${stat.color} p-3 rounded-xl shadow-lg`}>
-                                    <stat.icon className="w-6 h-6 text-white" />
+                                <div className={`bg-gradient-to-br ${stat.color} p-2.5 sm:p-3 rounded-xl shadow-lg flex-shrink-0`}>
+                                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
                             </div>
                         </motion.div>
@@ -313,17 +313,17 @@ export default function AdminDashboard() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 mb-6"
+                    className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 mb-4 sm:mb-6"
                 >
-                    <div className="flex flex-col md:flex-row gap-4">
+                    <div className="flex flex-col gap-3 sm:gap-4">
                         <div className="flex-1 relative">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                             <input
                                 type="text"
                                 placeholder="Search by name or roll number..."
                                 value={search}
                                 onChange={(e) => handleSearch(e.target.value)}
-                                className="w-full pl-12 pr-12 py-3 rounded-xl border-2 border-gray-200 focus:border-red-600 focus:outline-none transition-all duration-300"
+                                className="w-full pl-11 sm:pl-12 pr-10 sm:pr-12 py-3 rounded-xl border-2 border-gray-200 focus:border-red-600 focus:outline-none transition-all duration-300 text-sm"
                             />
                             {search && (
                                 <motion.button
@@ -332,42 +332,45 @@ export default function AdminDashboard() {
                                     onClick={() => handleSearch("")}
                                     className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-600 transition-colors"
                                 >
-                                    <X className="w-5 h-5" />
+                                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
                                 </motion.button>
                             )}
                         </div>
 
-                        <select
-                            value={filterClass}
-                            onChange={(e) => handleClass(e.target.value)}
-                            className="px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-red-600 focus:outline-none transition-all duration-300 bg-white"
-                        >
-                            <option value="">All Classes</option>
-                            {CLASSES.map((c) => (
-                                <option key={c} value={c}>{c}</option>
-                            ))}
-                        </select>
-
-                        {(search || filterClass) && (
-                            <motion.button
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => { handleSearch(""); handleClass(""); }}
-                                className="px-6 py-3 bg-red-50 text-red-600 font-semibold rounded-xl hover:bg-red-100 transition-all duration-300 border border-red-200"
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                            <select
+                                value={filterClass}
+                                onChange={(e) => handleClass(e.target.value)}
+                                className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-red-600 focus:outline-none transition-all duration-300 bg-white text-sm min-h-[44px]"
                             >
-                                Reset Filters
-                            </motion.button>
-                        )}
+                                <option value="">All Classes</option>
+                                {CLASSES.map((c) => (
+                                    <option key={c} value={c}>{c}</option>
+                                ))}
+                            </select>
+
+                            {(search || filterClass) && (
+                                <motion.button
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => { handleSearch(""); handleClass(""); }}
+                                    className="px-6 py-3 bg-red-50 text-red-600 font-semibold rounded-xl hover:bg-red-100 transition-all duration-300 border border-red-200 min-h-[44px]"
+                                >
+                                    Reset Filters
+                                </motion.button>
+                            )}
+                        </div>
                     </div>
                 </motion.div>
 
+                {/* Desktop Table View */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+                    className="hidden lg:block bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
                 >
                     <div className="overflow-x-auto">
                         <table className="w-full">
@@ -490,27 +493,158 @@ export default function AdminDashboard() {
                     </div>
                 </motion.div>
 
+                {/* Mobile Card View */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="lg:hidden space-y-3 sm:space-y-4"
+                >
+                    <AnimatePresence mode="wait">
+                        {loading ? (
+                            <motion.div
+                                key="loading"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="bg-white rounded-xl p-12 text-center shadow-lg border border-gray-100"
+                            >
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                    className="inline-block w-10 h-10 border-4 border-gray-200 border-t-red-600 rounded-full"
+                                />
+                                <p className="text-gray-500 mt-4 text-sm">Loading registrations...</p>
+                            </motion.div>
+                        ) : regs.length === 0 ? (
+                            <motion.div
+                                key="empty"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="bg-white rounded-xl p-12 text-center shadow-lg border border-gray-100"
+                            >
+                                <div className="text-5xl mb-3">📭</div>
+                                <p className="text-gray-500 font-medium text-sm">No registrations found</p>
+                            </motion.div>
+                        ) : (
+                            regs.map((reg, idx) => (
+                                <motion.div
+                                    key={reg.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: idx * 0.05 }}
+                                    className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden"
+                                >
+                                    <div className="bg-gradient-to-r from-red-600 to-red-700 px-4 py-3 flex items-center justify-between">
+                                        <div>
+                                            <span className="font-mono text-base font-bold text-white">
+                                                {reg.rollNumber}
+                                            </span>
+                                            <p className="text-[10px] text-red-100 mt-0.5">Roll Number</p>
+                                        </div>
+                                        <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-yellow-400 text-red-900">
+                                            {reg.class}
+                                        </span>
+                                    </div>
+
+                                    <div className="p-4 space-y-3">
+                                        <div>
+                                            <div className="font-bold text-gray-900 text-base mb-0.5">{reg.studentName}</div>
+                                            {reg.fatherName && (
+                                                <div className="text-xs text-gray-500">S/D of {reg.fatherName}</div>
+                                            )}
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <div className="flex items-start gap-2">
+                                                <FileText className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="text-xs text-gray-500">School</p>
+                                                    <p className="text-sm text-gray-900 font-medium break-words">{reg.school}</p>
+                                                </div>
+                                            </div>
+
+                                            {(reg.village || reg.district) && (
+                                                <div className="flex items-start gap-2">
+                                                    <MapPin className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                                                    <div className="flex-1 min-w-0">
+                                                        <p className="text-xs text-gray-500">Location</p>
+                                                        <p className="text-sm text-gray-900 break-words">
+                                                            {[reg.village, reg.district].filter(Boolean).join(", ")}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            <div className="flex items-center gap-2">
+                                                <Phone className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="text-xs text-gray-500">Phone</p>
+                                                    <p className="text-sm text-gray-900 font-medium">{reg.phone}</p>
+                                                </div>
+                                            </div>
+
+                                            {reg.createdAt && (
+                                                <div className="pt-2 border-t border-gray-100">
+                                                    <p className="text-xs text-gray-500">
+                                                        Registered: {new Date(reg.createdAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <motion.button
+                                            onClick={() => downloadAdmitCard(reg.id, reg.rollNumber)}
+                                            disabled={downloadingId === reg.id}
+                                            whileHover={{ scale: downloadingId === reg.id ? 1 : 1.02 }}
+                                            whileTap={{ scale: downloadingId === reg.id ? 1 : 0.98 }}
+                                            className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold px-4 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm min-h-[44px]"
+                                        >
+                                            {downloadingId === reg.id ? (
+                                                <>
+                                                    <motion.div
+                                                        animate={{ rotate: 360 }}
+                                                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                                                    />
+                                                    <span>Generating...</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Download className="w-4 h-4" />
+                                                    <span>Download Admit Card</span>
+                                                </>
+                                            )}
+                                        </motion.button>
+                                    </div>
+                                </motion.div>
+                            ))
+                        )}
+                    </AnimatePresence>
+                </motion.div>
+
                 {!loading && totalPages > 1 && (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="flex items-center justify-center gap-3 mt-8"
+                        className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-8"
                     >
                         <motion.button
                             onClick={() => setPage((p) => Math.max(1, p - 1))}
                             disabled={page === 1}
                             whileHover={{ scale: page === 1 ? 1 : 1.05 }}
                             whileTap={{ scale: page === 1 ? 1 : 0.95 }}
-                            className="px-4 py-2 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:border-red-600 hover:text-red-600 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+                            className="w-full sm:w-auto px-4 py-2.5 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:border-red-600 hover:text-red-600 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm min-h-[44px]"
                         >
                             <ChevronLeft className="w-4 h-4" />
                             Previous
                         </motion.button>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
                             {Array.from({ length: totalPages }, (_, i) => i + 1)
-                                .filter((p) => p === 1 || p === totalPages || Math.abs(p - page) <= 2)
+                                .filter((p) => p === 1 || p === totalPages || Math.abs(p - page) <= 1)
                                 .reduce((acc: (number | "…")[], p, i, arr) => {
                                     if (i > 0 && p - (arr[i - 1] as number) > 1) acc.push("…");
                                     acc.push(p);
@@ -518,14 +652,14 @@ export default function AdminDashboard() {
                                 }, [])
                                 .map((p, i) =>
                                     p === "…" ? (
-                                        <span key={`ellipsis-${i}`} className="text-gray-400 px-2">…</span>
+                                        <span key={`ellipsis-${i}`} className="text-gray-400 px-1 sm:px-2 text-sm">…</span>
                                     ) : (
                                         <motion.button
                                             key={p}
                                             onClick={() => setPage(p as number)}
                                             whileHover={{ scale: page === p ? 1 : 1.1 }}
                                             whileTap={{ scale: page === p ? 1 : 0.9 }}
-                                            className={`w-10 h-10 rounded-xl font-bold transition-all duration-300 ${page === p
+                                            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold transition-all duration-300 text-sm ${page === p
                                                     ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg"
                                                     : "bg-white text-gray-700 border-2 border-gray-200 hover:border-red-600 hover:text-red-600"
                                                 }`}
@@ -541,7 +675,7 @@ export default function AdminDashboard() {
                             disabled={page === totalPages}
                             whileHover={{ scale: page === totalPages ? 1 : 1.05 }}
                             whileTap={{ scale: page === totalPages ? 1 : 0.95 }}
-                            className="px-4 py-2 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:border-red-600 hover:text-red-600 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+                            className="w-full sm:w-auto px-4 py-2.5 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:border-red-600 hover:text-red-600 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm min-h-[44px]"
                         >
                             Next
                             <ChevronRight className="w-4 h-4" />
@@ -554,7 +688,7 @@ export default function AdminDashboard() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="text-center text-sm text-gray-500 mt-6"
+                        className="text-center text-xs sm:text-sm text-gray-500 mt-4 sm:mt-6 px-4"
                     >
                         Showing {regs.length === 0 ? 0 : (page - 1) * 10 + 1}–{Math.min(page * 10, total)} of {total} registrations
                     </motion.p>
