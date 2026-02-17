@@ -2,17 +2,22 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import { Eye, X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 36 },
-    visible: (i: number) => ({
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number = 0) => ({
         opacity: 1,
         y: 0,
-        transition: { delay: i * 0.08, duration: 0.6, ease: "easeOut" },
+        transition: {
+            delay: i * 0.1,
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1], // cubic-bezier instead of string
+        },
     }),
 };
+
 
 const images = [
     {
