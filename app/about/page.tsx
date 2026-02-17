@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { motion, useMotionValue, useTransform, animate, Variants } from 'framer-motion'
 import { Users, Award, BookOpen, Calendar, Target, Heart, Sparkles, TrendingUp } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -10,7 +10,7 @@ type Stat = {
     label: string
     value: number
     suffix: string
-    icon: any
+    icon: React.ComponentType<{ className?: string; strokeWidth?: number }>
 }
 
 const statsData: Stat[] = [
@@ -20,16 +20,16 @@ const statsData: Stat[] = [
     { label: 'Years of Excellence', value: 25, suffix: '+', icon: Calendar },
 ]
 
-const fadeInUp = {
+const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: "easeOut" }
+        transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
     }
 }
 
-const staggerContainer = {
+const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -37,12 +37,12 @@ const staggerContainer = {
     }
 }
 
-const scaleIn = {
+const scaleIn: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
         opacity: 1,
         scale: 1,
-        transition: { duration: 0.5, ease: "easeOut" }
+        transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
     }
 }
 
@@ -54,7 +54,7 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
     useEffect(() => {
         const controls = animate(count, value, {
             duration: 2,
-            ease: "easeOut",
+            ease: [0.4, 0, 0.2, 1],
         })
 
         const unsubscribe = rounded.on("change", (latest) => {
