@@ -76,14 +76,23 @@ export async function GET(req: Request) {
 
     XLSX.utils.book_append_sheet(wb, ws, "Registrations");
 
-    const buffer = XLSX.write(wb, { type: "buffer", bookType: "xlsx", cellStyles: true });
+    const buffer = XLSX.write(wb, {
+  type: "buffer",
+  bookType: "xlsx",
+  cellStyles: true,
+});
 
-    return new NextResponse(buffer, {
-      headers: {
-        "Content-Type":        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        "Content-Disposition": `attachment; filename="${filename}"`,
-      },
-    });
+const arrayBuffer =
+  buffer instanceof Uint8Array ? buffer.buffer : buffer;
+
+return new NextResponse(arrayBuffer, {
+  headers: {
+    "Content-Type":
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "Content-Disposition": `attachment; filename="${filename}"`,
+  },
+});
+
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
