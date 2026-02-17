@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
@@ -554,12 +556,16 @@ export async function POST(req: Request) {
     // ===== GENERATE & RETURN PDF =====
     const pdfBytes = await pdfDoc.save();
 
-    return new NextResponse(pdfBytes, {
-      headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename=${rollNumber}.pdf`,
-      },
-    });
+const buffer = Buffer.from(pdfBytes);
+
+return new Response(buffer, {
+  headers: {
+    "Content-Type": "application/pdf",
+    "Content-Disposition": `attachment; filename=${rollNumber}.pdf`,
+  },
+});
+
+
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
