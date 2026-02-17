@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { Library, Monitor, FlaskRound, Presentation, Trophy, Bus, Building2, Shield, Camera, AlertCircle, CalendarCheck } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -50,17 +50,16 @@ const facilities: Facility[] = [
         icon: Bus,
     },
 ]
-
-const fadeInUp = {
+const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: "easeOut" }
+        transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
     }
 }
 
-const staggerContainer = {
+const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -68,14 +67,15 @@ const staggerContainer = {
     }
 }
 
-const scaleIn = {
+const scaleIn: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
         opacity: 1,
         scale: 1,
-        transition: { duration: 0.5, ease: "easeOut" }
+        transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
     }
 }
+
 
 export default function FacilitiesPage() {
     return (
