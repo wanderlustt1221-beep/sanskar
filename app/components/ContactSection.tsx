@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import {
     User,
     Phone,
@@ -13,14 +13,19 @@ import {
     CheckCircle2,
 } from "lucide-react";
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 28 },
-    visible: (i: number) => ({
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number = 0) => ({
         opacity: 1,
         y: 0,
-        transition: { delay: i * 0.12, duration: 0.55, ease: "easeOut" },
+        transition: {
+            delay: i * 0.1,
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1], // cubic-bezier instead of string
+        },
     }),
 };
+
 
 interface FloatingInputProps {
     type: string;
@@ -48,8 +53,8 @@ const FloatingInput: React.FC<FloatingInputProps> = ({
             className="relative"
         >
             <div className={`relative rounded-xl border-2 transition-all duration-250 bg-white ${focused
-                    ? "border-red-500 shadow-[0_0_0_4px_rgba(220,38,38,0.10)]"
-                    : "border-gray-200 hover:border-gray-300"
+                ? "border-red-500 shadow-[0_0_0_4px_rgba(220,38,38,0.10)]"
+                : "border-gray-200 hover:border-gray-300"
                 }`}>
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
                     <Icon className={`w-4 h-4 transition-colors duration-200 ${focused ? "text-red-500" : "text-gray-400"}`} strokeWidth={2} />
@@ -67,8 +72,8 @@ const FloatingInput: React.FC<FloatingInputProps> = ({
                 />
                 <label
                     className={`absolute left-11 pointer-events-none transition-all duration-200 font-medium ${active
-                            ? "top-2.5 text-[10px] tracking-wider uppercase text-red-500"
-                            : "top-1/2 -translate-y-1/2 text-sm text-gray-400"
+                        ? "top-2.5 text-[10px] tracking-wider uppercase text-red-500"
+                        : "top-1/2 -translate-y-1/2 text-sm text-gray-400"
                         }`}
                 >
                     {label}
@@ -306,8 +311,8 @@ const ContactSection: React.FC = () => {
                                                     animate="visible"
                                                     variants={fadeUp}
                                                     className={`relative rounded-xl border-2 transition-all duration-250 bg-white ${focused
-                                                            ? "border-red-500 shadow-[0_0_0_4px_rgba(220,38,38,0.10)]"
-                                                            : "border-gray-200 hover:border-gray-300"
+                                                        ? "border-red-500 shadow-[0_0_0_4px_rgba(220,38,38,0.10)]"
+                                                        : "border-gray-200 hover:border-gray-300"
                                                         }`}
                                                 >
                                                     <div className="absolute left-4 top-4 pointer-events-none">
@@ -327,8 +332,8 @@ const ContactSection: React.FC = () => {
                                                         />
                                                         <label
                                                             className={`absolute left-11 pointer-events-none transition-all duration-200 font-medium ${focused || formData.message.length > 0
-                                                                    ? "top-2.5 text-[10px] tracking-wider uppercase text-red-500"
-                                                                    : "top-4 text-sm text-gray-400"
+                                                                ? "top-2.5 text-[10px] tracking-wider uppercase text-red-500"
+                                                                : "top-4 text-sm text-gray-400"
                                                                 }`}
                                                         >
                                                             Your Message
