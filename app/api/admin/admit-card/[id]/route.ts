@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 import clientPromise from "@/lib/mongodb";
@@ -353,12 +355,16 @@ export async function GET(
 
     const pdfBytes = await generateAdmitCardPDF(reg);
 
-    return new NextResponse(pdfBytes.buffer, {
-      headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename=${reg.rollNumber}.pdf`,
-      },
-    });
+// Convert properly to Uint8Array → Buffer → Body
+const buffer = Buffer.from(pdfBytes);
+
+return new NextResponse(buffer as any, {
+  headers: {
+    "Content-Type": "application/pdf",
+    "Content-Disposition": `attachment; filename=${reg.rollNumber}.pdf`,
+  },
+});
+
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
