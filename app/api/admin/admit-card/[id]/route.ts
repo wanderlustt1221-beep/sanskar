@@ -353,7 +353,7 @@ export async function GET(
 
     const pdfBytes = await generateAdmitCardPDF(reg);
 
-    return new NextResponse(pdfBytes, {
+    return new NextResponse(pdfBytes.buffer, {
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename=${reg.rollNumber}.pdf`,
